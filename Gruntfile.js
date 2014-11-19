@@ -33,22 +33,32 @@ module.exports = function (grunt) {
 
     // Configuration to be run (and then tested).
     uncss_html: {
-      default_options: {
+      single: {
         options: {
+          stylesheets: ['test/fixtures/css/*.css'],
+          customClasses: ['first', 'middle']
         },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        // files: [{
+        //   src: 'test/fixtures/html/*.html',
+        //   dest: 'test/tmp/html/'
+        // }]
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/html/',
+          src: ['*.html'],
+          ext: '.clean.js',
+          dest: 'test/tmp/html/'
+        }]
       },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      }
+      // custom_options: {
+      //   options: {
+      //     separator: ': ',
+      //     punctuation: ' !!!'
+      //   },
+      //   files: {
+      //     'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+      //   }
+      // }
     },
 
     // Unit tests.

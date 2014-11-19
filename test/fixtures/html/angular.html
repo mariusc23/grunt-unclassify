@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div ng-class="{ single : vm.variable }"></div>
+    <div ng-class="{ 'dashed-only' : vm.variable }"></div>
+    <div ng-class="{ 'dashed-first dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'dashed-first dashed-middle dashed-last' : vm.variable }"></div>
+
+    <div ng-class="{ exists-single : vm.variable }"></div>
+    <div ng-class="{ 'exists-dashed-only' : vm.variable }"></div>
+    <div ng-class="{ 'exists-dashed-first exists-dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'exists-dashed-first exists-dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+    <div ng-class="{ 'exists-dashed-first dashed-middle dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'dashed-first exists-dashed-middle dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'dashed-first dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+    <div ng-class="{ 'exists-dashed-first exists-dashed-middle dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'dashed-first exists-dashed-middle exists-dashed-last' : vm.variable }"></div>
+    <div ng-class="{ 'exists-dashed-first dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+    <div class="{{ notAClass }}"></div>
+  </body>
+</html>
