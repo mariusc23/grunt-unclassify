@@ -1,0 +1,4 @@
+#id.exists-first,.exists-middle:hover,.exists-last::before
+{
+    display: block;
+}

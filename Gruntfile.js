@@ -33,32 +33,119 @@ module.exports = function (grunt) {
 
     // Configuration to be run (and then tested).
     uncss_html: {
-      single: {
+      all_classes: {
         options: {
-          stylesheets: ['test/fixtures/css/*.css'],
-          customClasses: ['first', 'middle']
+          stylesheets: ['test/fixtures/css/*.css']
         },
-        // files: [{
-        //   src: 'test/fixtures/html/*.html',
-        //   dest: 'test/tmp/html/'
-        // }]
+        files: {
+          'test/tmp/html/regular.html': 'test/fixtures/html/regular.html'
+        }
+      },
+
+      custom: {
+        options: {
+          customClasses: ['custom']
+        },
+        files: {
+          'test/tmp/html/custom-classes.html': ['test/fixtures/html/custom-classes.html']
+        }
+      },
+
+      js: {
+        options: {
+          jsClasses: true
+        },
+        files: {
+          'test/tmp/html/js-classes.html': ['test/fixtures/html/js-classes.html']
+        }
+      },
+
+      filter: {
+        options: {
+          filter: function(className, classes) {
+            return className === 'filter' ? true : false;
+          }
+        },
+        files: {
+          'test/tmp/html/filter.html': ['test/fixtures/html/filter.html']
+        }
+      },
+
+      bootstrap: {
+        options: {
+          bootstrapClasses: true
+        },
+        files: {
+          'test/tmp/html/bootstrap.html': ['test/fixtures/html/bootstrap.html']
+        }
+      },
+
+      foundation: {
+        options: {
+          foundationClasses: true
+        },
+        files: {
+          'test/tmp/html/foundation.html': ['test/fixtures/html/foundation.html']
+        }
+      },
+
+      html5bp: {
+        options: {
+          html5bp: true
+        },
+        files: {
+          'test/tmp/html/html5bp.html': ['test/fixtures/html/html5bp.html']
+        }
+      },
+
+      overwrite: {
+        options: {
+          dry: true
+        },
+        src: ['test/fixtures/html_array/*.html']
+      },
+
+      single_file: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css']
+        },
+        files: {
+          'test/tmp/html_single/single.html': 'test/fixtures/html_single/single.html'
+        }
+      },
+
+      array_files: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css']
+        },
+        files: {
+          'test/tmp/html_array/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html']
+        }
+      },
+
+      array_filez: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css']
+        },
+        files: {
+          'test/tmp/html_arrayz/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html'],
+          'test/tmp/html_arrays/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html'],
+        }
+      },
+
+      multi_files: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css']
+        },
         files: [{
           expand: true,
-          cwd: 'test/fixtures/html/',
+          cwd: 'test/fixtures/html_multi',
           src: ['*.html'],
-          ext: '.clean.js',
-          dest: 'test/tmp/html/'
+          ext: '.html',
+          dest: 'test/tmp/html_multi/'
         }]
       },
-      // custom_options: {
-      //   options: {
-      //     separator: ': ',
-      //     punctuation: ' !!!'
-      //   },
-      //   files: {
-      //     'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-      //   }
-      // }
+
     },
 
     // Unit tests.
