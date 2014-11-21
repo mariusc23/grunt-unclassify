@@ -1,0 +1,23 @@
+<div ng-class="{ single : vm.variable }"></div>
+<div ng-class="{ 'dashed-only' : vm.variable }"></div>
+<div ng-class="{ 'dashed-first dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'dashed-first dashed-middle dashed-last' : vm.variable }"></div>
+
+<div ng-class="{ 'exists-single' : vm.variable }"></div>
+<div ng-class="{ 'exists-dashed-only' : vm.variable }"></div>
+<div ng-class="{ 'exists-dashed-first exists-dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'exists-dashed-first exists-dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+<div ng-class="{ 'exists-dashed-first dashed-middle dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'dashed-first exists-dashed-middle dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'dashed-first dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+<div ng-class="{ 'exists-dashed-first exists-dashed-middle dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'dashed-first exists-dashed-middle exists-dashed-last' : vm.variable }"></div>
+<div ng-class="{ 'exists-dashed-first dashed-middle exists-dashed-last' : vm.variable }"></div>
+
+<div ng-class="only"></div>
+<div ng-class="exists-only"></div>
+
+<div ng-class="[first, middle, last]"></div>
+<div ng-class="[first, exists-middle, last]"></div>

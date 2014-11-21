@@ -135,6 +135,25 @@ module.exports = function (grunt) {
         }]
       },
 
+      angular: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css'],
+          knockout: true
+        },
+        files: {
+          'test/tmp/angular/': ['test/fixtures/angular/*.html']
+        }
+      },
+
+      knockout: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css'],
+          knockout: true
+        },
+        files: {
+          'test/tmp/knockout/': ['test/fixtures/knockout/knockout-template.html', 'test/fixtures/knockout/knockout-bindings.html']
+        }
+      },
     },
 
     // Unit tests.

@@ -128,5 +128,32 @@ exports.uncss_html = {
     test.equal(actualThree, expectedThree, 'should process third file of multi.');
 
     test.done();
-  }
+  },
+  knockout_templates: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/knockout/knockout-template.html');
+    var expected = grunt.file.read('test/expected/knockout/knockout-template.html');
+    test.equal(actual, expected, 'should process process knockout template correctly.');
+
+    test.done();
+  },
+  // knockout_bindings: function (test) {
+  //   test.expect(1);
+
+  //   var actual = grunt.file.read('test/tmp/knockout/knockout-bindings.html');
+  //   var expected = grunt.file.read('test/expected/knockout/knockout-bindings.html');
+  //   test.equal(actual, expected, 'should process process knockout bindings correctly.');
+
+  //   test.done();
+  // },
+  // angular: function (test) {
+  //   test.expect(1);
+
+  //   var actual = grunt.file.read('test/tmp/angular/angular.html');
+  //   var expected = grunt.file.read('test/expected/angular/angular.html');
+  //   test.equal(actual, expected, 'should process process angular templates correctly.');
+
+  //   test.done();
+  // },
 };

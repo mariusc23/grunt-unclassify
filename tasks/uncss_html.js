@@ -102,6 +102,7 @@ module.exports = function (grunt) {
       foundationClasses: false,
       html5bpClasses: false,
       // filter: function() { return false; },
+      knockout: false,
       separator: grunt.util.linefeed,
       overwrite: false,
       dry: false
@@ -176,8 +177,19 @@ module.exports = function (grunt) {
           all: 0
         };
 
+        var fileContent = grunt.file.read(fileSrc);
+
+        if (options.knockout) {
+          var scriptTemplateRegExp = /<script\b[^>]*(?=text\/html)\b[^>]*>([\s\S]*?)<\/script>/gm;
+          fileContent = fileContent.replace(scriptTemplateRegExp, function(match) {
+            var result = match.replace('<script', '<uncsshtmlscript');
+            result = result.replace('</script', '</uncsshtmlscript');
+            return result;
+          });
+        }
+
         // Generate cheerio (fake DOM object)
-        var $ = cheerio.load(grunt.file.read(fileSrc), { decodeEntities: false });
+        var $ = cheerio.load(fileContent, { decodeEntities: false });
 
         // For each element that has a class
         $('[class]').each(function(i, element) {
@@ -240,14 +252,20 @@ module.exports = function (grunt) {
         // Remove empty attributes
         $('[class=""]').removeAttr('class');
 
+        fileContent = $.html();
+
+        if (options.knockout) {
+          fileContent = fileContent.replace(/uncsshtmlscript/gm, 'script');
+        }
+
         if (!options.dry) {
           if (options.overwrite) {
-            grunt.file.write(fileSrc, $.html());
+            grunt.file.write(fileSrc, fileContent);
           } else {
             try {
-              grunt.file.write(file.dest, $.html());
+              grunt.file.write(file.dest, fileContent);
             } catch(ex) {
-              grunt.file.write(file.dest + fileSrc.replace(/^.*[\\\/]/, ''), $.html());
+              grunt.file.write(file.dest + fileSrc.replace(/^.*[\\\/]/, ''), fileContent);
             }
           }
         }

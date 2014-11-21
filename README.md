@@ -78,6 +78,12 @@ Type: `Function`
 
 Function to protect classes. Classes that were not found in the css will run through this function. Return `true` to keep the class, `false` to remove the class. Parameters provided `(className, classes)`.
 
+#### options.knockout
+Type: `Boolean`    
+Default value: `false`
+
+Determines whether to search `<script type="text/html">` templates. Does not affect classes in `css:` bindings, yet.
+
 #### options.dry
 Type: `Boolean`    
 Default value: `false`
@@ -162,14 +168,15 @@ grunt.initConfig({
   uncss_html: {
     options: {
       stylesheets: ['assets/css/**/*.css'],
-      customClasses: ['apples', 'bananas'],
+      customClasses: ['apples', 'bananas'], // array syntax
       jsClasses: ['js-', 'is-'],
       bootstrapClasses: true,
       foundationClasses: true,
-      html5bpClasses: 'apples bananas',
+      html5bpClasses: 'apples bananas', // string syntax
       filter: function(className, classes) {
         return className === 'keep-me' ? true : false;
       },
+      knockout: true,
       dry: true,
       overwrite: true,
     },
