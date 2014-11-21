@@ -123,16 +123,6 @@ module.exports = function (grunt) {
         }
       },
 
-      array_filez: {
-        options: {
-          stylesheets: ['test/fixtures/css/*.css']
-        },
-        files: {
-          'test/tmp/html_arrayz/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html'],
-          'test/tmp/html_arrays/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html'],
-        }
-      },
-
       multi_files: {
         options: {
           stylesheets: ['test/fixtures/css/*.css']

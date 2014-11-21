@@ -162,16 +162,11 @@ module.exports = function (grunt) {
       all: 0
     };
 
-    console.log(this.files);
-
     // Iterate over all specified file groups.
     this.files.forEach(function (file) {
 
       _.forEach(file.src, function(fileSrc) {
         grunt.log.writeln(chalk.underline(fileSrc));
-
-        console.log(fileSrc);
-        console.log(file.dest);
 
         // File Stats
         var fileTotal = {
@@ -247,8 +242,11 @@ module.exports = function (grunt) {
           if (options.overwrite) {
             grunt.file.write(fileSrc, $.html());
           } else {
-            console.log(fileSrc.replace(/^.*[\\\/]/, ''));
-            grunt.file.write(file.dest, $.html());
+            try {
+              grunt.file.write(file.dest, $.html());
+            } catch(ex) {
+              grunt.file.write(file.dest + fileSrc.replace(/^.*[\\\/]/, ''), $.html());
+            }
           }
         }
       });
