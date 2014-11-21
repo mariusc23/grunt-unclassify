@@ -155,7 +155,7 @@ module.exports = function (grunt) {
 
     grunt.log.writeln('Found ' + classes.length + ' classes: ' + chalk.cyan(classes.join(', ')));
 
-    // Grand Total
+    // Target Total
     var stats = {
       removed: 0,
       untouched: 0,

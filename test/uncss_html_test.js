@@ -27,21 +27,105 @@ exports.uncss_html = {
     // setup here if necessary
     done();
   },
-  default_options: function (test) {
+  regular: function (test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var actual = grunt.file.read('test/tmp/html/regular.html');
+    var expected = grunt.file.read('test/expected/html/regular.html');
+    test.equal(actual, expected, 'should remove correct classes.');
 
     test.done();
   },
-  custom_options: function (test) {
+  custom_classes: function (test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('test/tmp/html/custom-classes.html');
+    var expected = grunt.file.read('test/expected/html/custom-classes.html');
+    test.equal(actual, expected, 'should preserve custom classes.');
+
+    test.done();
+  },
+  js_classes: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/js-classes.html');
+    var expected = grunt.file.read('test/expected/html/js-classes.html');
+    test.equal(actual, expected, 'should preserve javascript classes (prefixed with js-*).');
+
+    test.done();
+  },
+  filter: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/filter.html');
+    var expected = grunt.file.read('test/expected/html/filter.html');
+    test.equal(actual, expected, 'should preserve classes filtered by function.');
+
+    test.done();
+  },
+  bootstrap: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/bootstrap.html');
+    var expected = grunt.file.read('test/expected/html/bootstrap.html');
+    test.equal(actual, expected, 'should preserve bootstrap javascript classes.');
+
+    test.done();
+  },
+  foundation: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/foundation.html');
+    var expected = grunt.file.read('test/expected/html/foundation.html');
+    test.equal(actual, expected, 'should preserve foundation javascript classes.');
+
+    test.done();
+  },
+  html5bp: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/html5bp.html');
+    var expected = grunt.file.read('test/expected/html/html5bp.html');
+    test.equal(actual, expected, 'should preserve html5bp javascript classes.');
+
+    test.done();
+  },
+  single_file: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html_single/single.html');
+    var expected = grunt.file.read('test/expected/html_single/single.html');
+    test.equal(actual, expected, 'should process a single file.');
+
+    test.done();
+  },
+  array_files: function (test) {
+    test.expect(2);
+
+    var actualOne = grunt.file.read('test/tmp/html_array/array-1.html');
+    var expectedOne = grunt.file.read('test/expected/html_array/array-1.html');
+    test.equal(actualOne, expectedOne, 'should process first file of array.');
+
+    var actualTwo = grunt.file.read('test/tmp/html_array/array-2.html');
+    var expectedTwo = grunt.file.read('test/expected/html_array/array-2.html');
+    test.equal(actualTwo, expectedTwo, 'should process second file of array.');
+
+    test.done();
+  },
+  multi_files: function (test) {
+    test.expect(3);
+
+    var actualOne = grunt.file.read('test/tmp/html_multi/multi-1.html');
+    var expectedOne = grunt.file.read('test/expected/html_multi/multi-1.html');
+    test.equal(actualOne, expectedOne, 'should process first file of multi.');
+
+    var actualTwo = grunt.file.read('test/tmp/html_multi/multi-2.html');
+    var expectedTwo = grunt.file.read('test/expected/html_multi/multi-2.html');
+    test.equal(actualTwo, expectedTwo, 'should process second file of multi.');
+
+    var actualThree = grunt.file.read('test/tmp/html_multi/multi-3.html');
+    var expectedThree = grunt.file.read('test/expected/html_multi/multi-3.html');
+    test.equal(actualThree, expectedThree, 'should process third file of multi.');
 
     test.done();
   }

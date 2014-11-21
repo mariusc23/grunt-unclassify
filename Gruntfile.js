@@ -37,9 +37,8 @@ module.exports = function (grunt) {
         options: {
           stylesheets: ['test/fixtures/css/*.css']
         },
-        files: {
-          'test/tmp/html/regular.html': 'test/fixtures/html/regular.html'
-        }
+        src: ['test/fixtures/html/regular.html'],
+        dest: 'test/tmp/html/regular.html'
       },
 
       custom: {
