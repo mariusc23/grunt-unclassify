@@ -153,10 +153,11 @@ module.exports = function (grunt) {
       classes = _.uniq(classes);
     }
 
-    grunt.log.writeln('Found ' + classes.length + ' classes: ' + chalk.cyan(classes.join(', ')));
+    grunt.verbose.writeln('Found ' + classes.length + ' classes: ' + chalk.cyan(classes.join(', ')));
 
     // Target Total
     var stats = {
+      removedClasses: [],
       removed: 0,
       untouched: 0,
       all: 0
@@ -197,12 +198,13 @@ module.exports = function (grunt) {
                 (!options.filter || options.filter.call(that, elClass, classes) === false) &&
                 (!options.jsClasses || !isJsClass(elClass, options.jsClasses))) {
               removeClasses.push(elClass);
-              fileTotal.removed++;
+              stats.removedClasses.push(elClass);
               stats.removed++;
+              fileTotal.removed++;
             } else {
               resultClasses.push(elClass);
-              fileTotal.untouched++;
               stats.untouched++;
+              fileTotal.untouched++;
             }
             fileTotal.all++;
             stats.all++;
@@ -255,6 +257,8 @@ module.exports = function (grunt) {
     if (stats.removed === 0) {
       grunt.log.writeln(chalk.bgYellow.black.bold('[TOTAL] No classes removed.'));
     } else {
+      grunt.log.writeln(chalk.gray('Classes removed:'), chalk.gray(_.uniq(stats.removedClasses).join(', ')));
+      grunt.log.writeln('');
       grunt.log.writeln(chalk.bgYellow.black.bold('[TOTAL] Removed ' + stats.removed + ' out of ' + stats.all + ' classes.'));
     }
 
