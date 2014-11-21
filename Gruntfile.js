@@ -118,7 +118,7 @@ module.exports = function (grunt) {
           stylesheets: ['test/fixtures/css/*.css']
         },
         files: {
-          'test/tmp/html_array/': ['test/fixtures/html_array/array-1.html', 'test/fixtures/html_array/array-2.html']
+          'test/tmp/html_array/': ['test/fixtures/html_array/*.html']
         }
       },
 

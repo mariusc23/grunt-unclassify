@@ -1,4 +1,4 @@
-# grunt-uncss-html
+# grunt-uncss-html v0.0.1
 
 > Remove unused css classes in your html.
 
@@ -37,47 +37,149 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.stylesheets
+Type: `Array/Path`
 
-A string value that is used to do something with whatever.
+An array of paths to stylesheets. You can use file globbing patterns. Valid examples:    
+`['path/to/styles.css']` OR `['path/to/**/*.css']`  
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.customClasses
+Type: `Array/String`    
+Default value: `[]`
 
-A string value that is used to do something else with whatever else.
+Array or space-separated list of additional classes to protect (not remove from html).
+
+#### options.jsClasses
+Type: `Array/Boolean`    
+Default value: `true`
+
+Array of prefixes to protect (not remove). Default of `true` will result in `['js-']`. Setting to `false` will disable it. Use this to preserve classes that are only used by your javascript (and are not in the css);
+
+#### options.bootstrapClasses
+Type: `Array/Boolean`    
+Default value: `false`
+
+Array of bootstrap javascript classes to protect (not remove). Setting to `true` will result in a default list maintained by this plugin. Last updated for *Bootstrap v3.3.1*.
+
+#### options.foundationClasses
+Type: `Array/Boolean`    
+Default value: `false`
+
+Array of foundation javascript classes to protect (not remove). Setting to `true` will result in a default list maintained by this plugin. Last updated for *Foundation 5*.
+
+#### options.html5bpClasses
+Type: `Array/Boolean`    
+Default value: `false`
+
+Array of HTML5 Boilerplate classes to protect (not remove). Setting to `true` will result in a default list maintained by this plugin. Last updated for *HTML5BP v4.3.0*.
+
+#### options.filter
+Type: `Function`
+
+Function to protect classes. Classes that were not found in the css will run through this function. Return `true` to keep the class, `false` to remove the class. Parameters provided `(className, classes)`.
+
+#### options.dry
+Type: `Boolean`    
+Default value: `false`
+
+Will not write any files. Simulated results will be printed in the terminal. **Highly recommended to run like this first to identify non-css classes.** Classes that are used by javascript but are not in your css will be removed if not accounted for using the options above.
+
+#### options.overwrite
+Type: `Boolean`    
+Default value: `false`
+
+Files will be overwritten instead of written to dest. Disabled when *options.dry* is `true`.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  uncss_html: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### Single File
 
 ```js
 grunt.initConfig({
   uncss_html: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      stylesheets: ['assets/css/**/*.css']
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dist/index.html': 'dev/index.html'
+    }
+  },
+})
+```
+
+#### Multiple Files
+
+```js
+grunt.initConfig({
+  uncss_html: {
+    options: {
+      stylesheets: ['assets/css/**/*.css']
     },
+    files: {
+      'dist/templates/': ['dev/templates/*.html']
+    }
+  },
+})
+```
+
+#### Multiple Files (Expand)
+
+```js
+grunt.initConfig({
+  uncss_html: {
+    options: {
+      stylesheets: ['assets/css/**/*.css']
+    },
+    files: [{
+      expand: true,
+      cwd: 'dev/templates',
+      src: ['*.html'],
+      ext: '.html',
+      dest: 'dist/templates/'
+    }]
+  },
+})
+```
+
+#### Overwrite Existing Files
+
+```js
+grunt.initConfig({
+  uncss_html: {
+    options: {
+      stylesheets: ['assets/css/**/*.css'],
+      overwrite: true
+    },
+    src: ['dev/templates/**/*.html']
+  },
+})
+```
+
+#### All options
+
+```js
+grunt.initConfig({
+  uncss_html: {
+    options: {
+      stylesheets: ['assets/css/**/*.css'],
+      customClasses: ['apples', 'bananas'],
+      jsClasses: ['js-', 'is-'],
+      bootstrapClasses: true,
+      foundationClasses: true,
+      html5bpClasses: 'apples bananas',
+      filter: function(className, classes) {
+        return className === 'keep-me' ? true : false;
+      },
+      dry: true,
+      overwrite: true,
+    },
+    files: [{
+      expand: true,
+      cwd: 'dev/templates',
+      src: ['**/*.html'],
+      ext: '.html',
+      dest: 'dist/templates/'
+    }]
   },
 })
 ```
@@ -86,7 +188,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+ * 2014-11-19   v0.0.1   Initial release.  
 
 ## License
 Copyright (c) 2014 Marius Craciunoiu. Licensed under the MIT license.
