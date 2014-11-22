@@ -53,7 +53,7 @@ Array or space-separated list of additional classes to protect (not remove from 
 Type: `Array/Boolean`    
 Default value: `true`
 
-Array of prefixes to protect (not remove). Default of `true` will result in `['js-']`. Setting to `false` will disable it. Use this to preserve classes that are only used by your javascript (and are not in the css);
+Array of prefixes to protect (not remove). Default of `true` will result in `['js-']`. Setting to `false` will disable it. Use this to preserve classes that are only used by your javascript (and are not in the css).
 
 #### options.bootstrapClasses
 Type: `Array/Boolean`    
