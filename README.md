@@ -1,5 +1,7 @@
 # grunt-uncss-html v0.0.1
 
+[![Circle CI](https://circleci.com/gh/mariusc23/grunt-uncss-html.svg?style=shield&circle-token=b800bcfa83e31fb5b5998bf1a6ba9db8af6d7fbe)](https://circleci.com/gh/mariusc23/grunt-uncss-html)
+
 > Remove unused css classes in your html.
 
 ## Getting Started
