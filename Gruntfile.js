@@ -154,6 +154,15 @@ module.exports = function (grunt) {
           'test/tmp/knockout/': ['test/fixtures/knockout/knockout-template.html', 'test/fixtures/knockout/knockout-bindings.html']
         }
       },
+
+      django: {
+        options: {
+          stylesheets: ['test/fixtures/css/*.css']
+        },
+        files: {
+          'test/tmp/django/': ['test/fixtures/django/django-template.html']
+        }
+      },
     },
 
     // Unit tests.

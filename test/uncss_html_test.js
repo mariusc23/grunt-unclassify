@@ -156,4 +156,13 @@ exports.uncss_html = {
 
   //   test.done();
   // },
+  django_templates: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/django/django-template.html');
+    var expected = grunt.file.read('test/expected/django/django-template.html');
+    test.equal(actual, expected, 'should process process django template correctly.');
+
+    test.done();
+  },
 };

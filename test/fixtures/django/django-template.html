@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+<h1 class="only">{{ section.title }}</h1>
+
+{% for story in story_list %}
+<h2 class="exists-only">
+  <a href="{{ story.get_absolute_url }}">
+    {{ story.headline|upper }}
+  </a>
+</h2>
+<p>{{ story.tease|truncatewords:"100" }}</p>
+{% endfor %}
+{% endblock %}
+
