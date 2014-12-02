@@ -199,6 +199,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2014-12-02   v0.0.2   Fix reading classes in media queries.  
  * 2014-12-02   v0.0.1   Initial release.  
 
 ## License
