@@ -36,6 +36,15 @@ exports.unclassify = {
 
     test.done();
   },
+  media_query: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('test/tmp/html/media-query.html');
+    var expected = grunt.file.read('test/expected/html/media-query.html');
+    test.equal(actual, expected, 'should read classes in media queries.');
+
+    test.done();
+  },
   custom_classes: function (test) {
     test.expect(1);
 

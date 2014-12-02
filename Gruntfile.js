@@ -41,6 +41,15 @@ module.exports = function (grunt) {
         dest: 'test/tmp/html/regular.html'
       },
 
+      media: {
+        options: {
+          stylesheets: ['test/fixtures/css/media-query.css']
+        },
+        files: {
+          'test/tmp/html/media-query.html': ['test/fixtures/html/media-query.html']
+        }
+      },
+
       custom: {
         options: {
           customClasses: ['custom']

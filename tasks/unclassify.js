@@ -40,28 +40,45 @@ module.exports = function (grunt) {
   };
 
   /**
-   * Helper to create an array containg all classes found in CSS
-   * @param  {Object}  rules          From parseStyles
+   * Helper to create an array of all classes found in a list of selectors
+   * @param  {Array}  selectors   List of selectors for a rule.
    * @return {Array}
    */
   var classRegExp = /\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*/g; // http://stackoverflow.com/questions/448981/what-characters-are-valid-in-css-class-selectors
-  var parseClasses = function(rules, ignoredClasses) {
-    var classes = [];
-    _.forEach(rules, function(rule) {
-      _.forEach(rule.selectors, function(selector) {
-        // TODO: deal with handlebars
-        var matches = getMatchingClasses(selector);
-        _.forEach(matches, function(match) {
-          classes.push(match.substring(1)); // get rid of .
-        });
-      });
-    });
-    return _.uniq(classes);
-  };
-
   var getMatchingClasses = _.memoize(function(selector) {
     return selector.match(classRegExp);
   });
+
+  var parseSelectors = function(selectors) {
+    var classes = [];
+    _.forEach(selectors, function(selector) {
+      // TODO: deal with handlebars
+      var matches = getMatchingClasses(selector);
+      _.forEach(matches, function(match) {
+        classes.push(match.substring(1)); // get rid of .
+      });
+    });
+    return classes;
+  };
+
+  /**
+   * Helper to create an array containing all classes found in css rules
+   * @param  {Object}  rules   From parseStyles (npm css parser)
+   * @return {Array}
+   */
+  var parseClasses = function(rules, ignoredClasses) {
+    var classes = [];
+    _.forEach(rules, function(rule) {
+      if (rule.selectors) {
+        classes = classes.concat(parseSelectors(rule.selectors));
+      } else if (rule.rules) {
+        _.forEach(rule.rules, function(subrule) {
+          classes = classes.concat(parseSelectors(subrule.selectors));
+        });
+      }
+    });
+    return _.uniq(classes);
+  };
 
   /**
    * Helper to check if class is part of classes
