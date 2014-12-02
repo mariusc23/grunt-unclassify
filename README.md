@@ -199,7 +199,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
- * 2014-11-19   v0.0.1   Initial release.  
+ * 2014-12-02   v0.0.1   Initial release.  
 
 ## License
 Copyright (c) 2014 Marius Craciunoiu. Licensed under the MIT license.
