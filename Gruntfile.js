@@ -1,6 +1,6 @@
 /*
- * grunt-uncss-html
- * https://github.com/mariusc23/grunt-uncss-html
+ * grunt-unclassify
+ * https://github.com/mariusc23/grunt-unclassify
  *
  * Copyright (c) 2014 Marius Craciunoiu
  * Licensed under the MIT license.
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     },
 
     // Configuration to be run (and then tested).
-    uncss_html: {
+    unclassify: {
       all_classes: {
         options: {
           stylesheets: ['test/fixtures/css/*.css']
@@ -177,7 +177,7 @@ module.exports = function (grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'uncss_html', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'unclassify', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

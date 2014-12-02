@@ -1,6 +1,7 @@
-# grunt-uncss-html v0.0.1
+# grunt-unclassify
 
-[![Circle CI](https://circleci.com/gh/mariusc23/grunt-uncss-html.svg?style=shield&circle-token=b800bcfa83e31fb5b5998bf1a6ba9db8af6d7fbe)](https://circleci.com/gh/mariusc23/grunt-uncss-html)
+[![NPM Version](http://img.shields.io/npm/v/grunt-unclassify.svg)](https://www.npmjs.org/package/grunt-unclassify)
+[![Circle CI](https://circleci.com/gh/mariusc23/grunt-unclassify.svg?style=shield&circle-token=b800bcfa83e31fb5b5998bf1a6ba9db8af6d7fbe)](https://circleci.com/gh/mariusc23/grunt-unclassify)
 
 > Remove unused css classes in your html.
 
@@ -10,23 +11,23 @@ This plugin requires Grunt.
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-uncss-html --save-dev
+npm install grunt-unclassify --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-uncss-html');
+grunt.loadNpmTasks('grunt-unclassify');
 ```
 
-## The "uncss_html" task
+## The "unclassify" task
 
 ### Overview
-In your project's Gruntfile, add a section named `uncss_html` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `unclassify` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       // Task-specific options go here.
     },
@@ -104,7 +105,7 @@ Files will be overwritten instead of written to dest. Disabled when *options.dry
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       stylesheets: ['assets/css/**/*.css']
     },
@@ -119,7 +120,7 @@ grunt.initConfig({
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       stylesheets: ['assets/css/**/*.css']
     },
@@ -134,7 +135,7 @@ grunt.initConfig({
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       stylesheets: ['assets/css/**/*.css']
     },
@@ -153,7 +154,7 @@ grunt.initConfig({
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       stylesheets: ['assets/css/**/*.css'],
       overwrite: true
@@ -167,7 +168,7 @@ grunt.initConfig({
 
 ```js
 grunt.initConfig({
-  uncss_html: {
+  unclassify: {
     options: {
       stylesheets: ['assets/css/**/*.css'],
       customClasses: ['apples', 'bananas'], // array syntax

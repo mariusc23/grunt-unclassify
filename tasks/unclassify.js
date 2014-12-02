@@ -1,6 +1,6 @@
 /*
- * grunt-uncss-html
- * https://github.com/mariusc23/grunt-uncss-html
+ * grunt-unclassify
+ * https://github.com/mariusc23/grunt-unclassify
  *
  * Copyright (c) 2014 Marius Craciunoiu
  * Licensed under the MIT license.
@@ -90,7 +90,7 @@ module.exports = function (grunt) {
     return false;
   });
 
-  grunt.registerMultiTask('uncss_html', 'Remove unused css classes in your html.', function () {
+  grunt.registerMultiTask('unclassify', 'Remove unused css classes in your html.', function () {
     var that = this;
 
     // Merge task-specific and/or target-specific options with these defaults.
@@ -182,8 +182,8 @@ module.exports = function (grunt) {
         if (options.knockout) {
           var scriptTemplateRegExp = /<script\b[^>]*(?=text\/html)\b[^>]*>([\s\S]*?)<\/script>/gm;
           fileContent = fileContent.replace(scriptTemplateRegExp, function(match) {
-            var result = match.replace('<script', '<uncsshtmlscript');
-            result = result.replace('</script', '</uncsshtmlscript');
+            var result = match.replace('<script', '<unclassifyscript');
+            result = result.replace('</script', '</unclassifyscript');
             return result;
           });
         }
@@ -255,7 +255,7 @@ module.exports = function (grunt) {
         fileContent = $.html();
 
         if (options.knockout) {
-          fileContent = fileContent.replace(/uncsshtmlscript/gm, 'script');
+          fileContent = fileContent.replace(/unclassifyscript/gm, 'script');
         }
 
         if (!options.dry) {

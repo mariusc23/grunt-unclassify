@@ -1,9 +1,9 @@
 {
-  "name": "grunt-uncss-html",
+  "name": "grunt-unclassify",
   "version": "0.0.1",
   "description": "Remove unused css classes in your html.",
-  "homepage": "https://github.com/mariusc23/grunt-uncss-html",
-  "repository": "git@github.com:mariusc23/grunt-uncss-html.git",
+  "homepage": "https://github.com/mariusc23/grunt-unclassify",
+  "repository": "git@github.com:mariusc23/grunt-unclassify.git",
   "author": {
     "name": "Marius Craciunoiu",
     "url": "www.mariusc23.com"
