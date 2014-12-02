@@ -1,6 +1,6 @@
 {
   "name": "grunt-unclassify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Remove unused css classes in your html.",
   "homepage": "https://github.com/mariusc23/grunt-unclassify",
   "repository": "git@github.com:mariusc23/grunt-unclassify.git",
