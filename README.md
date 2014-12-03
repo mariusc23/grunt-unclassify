@@ -38,6 +38,8 @@ grunt.initConfig({
 })
 ```
 
+**NOTE:** This plugin uses [Cheerio](https://github.com/cheeriojs/cheerio) to parse your HTML. Besides removing classes, it may also attempt to fix unclosed/stray tags and other formatting issues.
+
 ### Options
 
 #### options.stylesheets
@@ -199,6 +201,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2014-12-03   v0.0.3   Update readme.  
  * 2014-12-02   v0.0.2   Fix reading classes in media queries.  
  * 2014-12-02   v0.0.1   Initial release.  
 
