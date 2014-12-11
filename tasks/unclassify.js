@@ -245,14 +245,13 @@ module.exports = function (grunt) {
           // Log output
           if (removeClasses.length) {
             grunt.log.writeln(chalk.gray([
-              '[', chalk.red(removeClasses.length), ', ', chalk.green(resultClasses.length) + '] ',
               el[0].name,
               ' .',
               elClasses.join(' .'),
               ' - ',
-              chalk.red(removeClasses.join(' ')),
-              resultClasses.length ? ' == ' : '',
-              chalk.green(resultClasses.join(' '))
+              chalk.red(removeClasses.join(' '))
+              // resultClasses.length ? ' == ' : '',
+              // chalk.green(resultClasses.join(' '))
             ].join('')));
           }
 
