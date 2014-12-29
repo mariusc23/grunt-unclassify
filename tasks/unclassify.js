@@ -185,8 +185,6 @@ module.exports = function (grunt) {
     this.files.forEach(function (file) {
 
       _.forEach(file.src, function(fileSrc) {
-        grunt.log.writeln(chalk.underline(fileSrc));
-
         // File Stats
         var fileTotal = {
           removed: 0,
@@ -244,23 +242,21 @@ module.exports = function (grunt) {
 
           // Log output
           if (removeClasses.length) {
+            if (fileTotal.removed === removeClasses.length) {
+              grunt.log.writeln(chalk.underline(fileSrc));
+            }
             grunt.log.writeln(chalk.gray([
               el[0].name,
               ' .',
               elClasses.join(' .'),
               ' - ',
               chalk.red(removeClasses.join(' '))
-              // resultClasses.length ? ' == ' : '',
-              // chalk.green(resultClasses.join(' '))
             ].join('')));
           }
 
         });
 
-        if (fileTotal.removed === 0) {
-          grunt.log.writeln(chalk.gray('No classes removed.'));
-          grunt.log.writeln();
-        } else {
+        if (fileTotal.removed > 0) {
           grunt.log.writeln(chalk.gray('Removed ' + chalk.red(fileTotal.removed) + ' out of ' + chalk.blue(fileTotal.all) + ' classes.'));
           grunt.log.writeln();
         }

@@ -200,7 +200,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-
+ * 2014-12-11   v0.0.5   Do not output file names unless classes were removed.
  * 2014-12-11   v0.0.4   Make console output less verbose.
  * 2014-12-03   v0.0.3   Update readme.  
  * 2014-12-02   v0.0.2   Fix reading classes in media queries.  
